@@ -22,7 +22,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       "migrations": ["migration/*.js"],
 
       synchronize: true,
-      logging:"all",
+      // logging:"all",
       autoLoadEntities: true,
     }),
     DanhmucModule,SanphamModule,
