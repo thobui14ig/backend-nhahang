@@ -9,9 +9,9 @@ export class OrderDetailsService extends TypeOrmCrudService<OrderDetailsEntity>{
     super(repo);
   }
 
-  updateOrderDetail(request){
-    console.log(request);
-    
-    return request
+  async deleteOrderDetailsByIdban(request){
+    return await this.repo.delete({
+      orderId: request.orderId,
+    });
   }
 }

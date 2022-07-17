@@ -19,4 +19,9 @@ import { ApiTags } from '@nestjs/swagger';
 @ApiTags('orderDetails')
 export class OrderDetailsController implements CrudController<OrderDetailsEntity> {
   constructor(public service: OrderDetailsService) {}
+
+  @Post('/deleteOrder')
+  deleteOrderDetailsByIdban(@Body() request){
+    return this.service.deleteOrderDetailsByIdban(request)
+  }
 }
