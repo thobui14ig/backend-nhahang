@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { Crud, CrudController } from '@nestjsx/crud';
 import { HoantatEntity } from './hoanthanh.entity';
 import { HoantatService } from './hoanthanh.service';
@@ -20,7 +20,20 @@ import { ApiTags } from '@nestjs/swagger';
 @ApiTags('hoantat')
 export class HoantatController implements CrudController<HoantatEntity> {
   constructor(public service: HoantatService) {}
-  get base(): CrudController<HoantatEntity> {
-    return this;
+
+  @Get('/doanhthungay')
+  getDoanhthungay(){
+    return this.service.getDoanhthungay()
   }
+
+  @Get('/doanhthuthang/:n')
+  getDoanhthuthang(@Param() n: number){
+    return this.service.getDoanhthuthang(n)
+  }
+
+  @Get('/doanhthutuan/:start/:end')
+  getDoanhthutuan(@Param() param: number){
+    return this.service.getDoanhthutuan(param)
+  }
+
 }
