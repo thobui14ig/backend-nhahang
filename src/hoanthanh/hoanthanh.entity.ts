@@ -7,6 +7,10 @@ export class HoantatEntity {
     @Column() 
     orderId: number;
 
+    @Column() 
+    tongtien: string;
+
+
     @CreateDateColumn()
     ngaytao?: Date;
 }

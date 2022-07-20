@@ -7,7 +7,7 @@ export class OrderDetailsEntity {
     @Column() orderId: number;
 
     @Column() sanphamId: number;
-    @Column() soluong: number;
+    @Column({ type: "numeric", precision: 10, scale: 2 }) soluong: number;
 
     @ManyToOne(() => OrderEntity, (orderDetails) => orderDetails.orderDetails)
     order: OrderEntity

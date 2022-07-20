@@ -3,5 +3,5 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 export class DanhmucEntity {
     @PrimaryGeneratedColumn() id: number;
 
-    @Column() name: string;
+    @Column({ nullable: false }) name: string;
 }
