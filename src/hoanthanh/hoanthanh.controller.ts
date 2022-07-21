@@ -36,4 +36,9 @@ export class HoantatController implements CrudController<HoantatEntity> {
     return this.service.getDoanhthutuan(param)
   }
 
+  @Get('/doanhthunam/:year')
+  getDoanhthunam(@Param() param: number){
+    return this.service.getDoanhthunam(param)
+  }
+
 }
