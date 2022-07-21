@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
-import dayjs from 'dayjs';
+import * as dayjs from 'dayjs';
 import { HoantatEntity } from './hoanthanh.entity';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class HoantatService extends TypeOrmCrudService<HoantatEntity>{
 
   async getDoanhthungay(){
     const curentDay = new Date();
-    const dayFomart = curentDay.getFullYear() + "/" + (curentDay.getMonth() + 1) + "/" + curentDay.getDate();
+    const dayFomart =  this.formatDay(curentDay);
     const data = await this.repo
     .createQueryBuilder('ht')
     .select('ht.tongtien')
@@ -44,6 +44,19 @@ export class HoantatService extends TypeOrmCrudService<HoantatEntity>{
     .createQueryBuilder('ht')
     .select('ht.tongtien')
     .where('ht.ngaytao between :a and :b', { a: `${start} 00:00:00`, b: `${end} 23:59:59` })
+    .getMany();
+
+    const total = this.getTotal(data)
+    return total;
+  }
+
+  async getDoanhthunam(param){
+    let { year } = param
+
+    const data = await this.repo
+    .createQueryBuilder('ht')
+    .select('ht.tongtien')
+    .where('ht.ngaytao between :a and :b', { a: `${year}/01/01 00:00:00`, b: `${year}/12/31 23:59:59` })
     .getMany();
 
     const total = this.getTotal(data)

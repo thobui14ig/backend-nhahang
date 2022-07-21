@@ -1,3 +1,4 @@
+import { ChinhanhModule } from './chinhanh/chinhanh.module';
 import { HoantatModule } from './hoanthanh/hoanthanh.module';
 import { OrderDetailsModule } from './orderDetails/orderDetails.module';
 import { OrderModule } from './order/order.module';
@@ -28,7 +29,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     }),
     DanhmucModule,SanphamModule,
     BanModule,OrderModule,
-    OrderDetailsModule, HoantatModule
+    OrderDetailsModule, HoantatModule,
+    ChinhanhModule
 
 
   ],
