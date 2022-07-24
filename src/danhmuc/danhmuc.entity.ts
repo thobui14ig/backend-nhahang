@@ -4,4 +4,6 @@ export class DanhmucEntity {
     @PrimaryGeneratedColumn() id: number;
 
     @Column({ nullable: false }) name: string;
+
+
 }
