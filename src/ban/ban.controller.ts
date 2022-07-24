@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { Crud, CrudController } from '@nestjsx/crud';
 import { BanEntity } from './ban.entity';
 import { BanService } from './ban.service';
@@ -20,9 +20,4 @@ import { ApiTags } from '@nestjs/swagger';
 @ApiTags('ban')
 export class BanController implements CrudController<BanEntity> {
   constructor(public service: BanService) {}
-
-  @Get('/add')
-  create(){
-      return this.service.add()
-  }
 }

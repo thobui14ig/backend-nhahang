@@ -6,6 +6,8 @@ export class BanEntity {
 
     @Column() name: string;
     @Column({ default: false }) active: boolean;
+    @Column({ default: 1 }) chinhanhId: number;
+
     @OneToOne(() => OrderEntity, (order) => order.ban) // specify inverse side as a second parameter
     order: OrderEntity
 }
