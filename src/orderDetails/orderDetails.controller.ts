@@ -24,4 +24,10 @@ export class OrderDetailsController implements CrudController<OrderDetailsEntity
   deleteOrderDetailsByIdban(@Body() request){
     return this.service.deleteOrderDetailsByIdban(request)
   }
+
+
+  @Post('/themmot')
+  themMotSanPham(@Body() request){
+    return this.service.themMotSanPham(request)
+  }
 }
