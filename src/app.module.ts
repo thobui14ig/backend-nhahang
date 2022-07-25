@@ -1,6 +1,6 @@
 import { KhoModule } from './nhapkho/nhapkho.module';
 import { ChinhanhModule } from './chinhanh/chinhanh.module';
-import { HoantatModule } from './hoanthanh/hoanthanh.module';
+import { HoantatModule } from './hoantat/hoantat.module';
 import { OrderDetailsModule } from './orderDetails/orderDetails.module';
 import { OrderModule } from './order/order.module';
 import { BanModule } from './ban/ban.module';

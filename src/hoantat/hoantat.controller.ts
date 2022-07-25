@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { Crud, CrudController } from '@nestjsx/crud';
-import { HoantatEntity } from './hoanthanh.entity';
-import { HoantatService } from './hoanthanh.service';
+import { HoantatEntity } from './hoantat.entity';
+import { HoantatService } from './hoantat.service';
 
 import { ApiTags } from '@nestjs/swagger';
 @Crud({
