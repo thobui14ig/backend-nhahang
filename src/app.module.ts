@@ -8,6 +8,8 @@ import { SanphamModule } from './sanpham/sanpham.module';
 import { DanhmucModule } from './danhmuc/danhmuc.module';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TrackingModule } from './tracking/tracking.module';
+import { RedisModule } from '@liaoliaots/nestjs-redis';
 
 
 @Module({
@@ -28,10 +30,17 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       logging:"all",
       autoLoadEntities: true,
     }),
+    RedisModule.forRoot({
+      config: {
+        port: 6379,
+        host: 'localhost'
+      }
+    }),
+
     DanhmucModule,SanphamModule,
     BanModule,OrderModule,
     OrderDetailsModule, HoantatModule,
-    ChinhanhModule, KhoModule
+    ChinhanhModule, KhoModule, TrackingModule
 
 
   ],
