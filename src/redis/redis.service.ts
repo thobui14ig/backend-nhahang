@@ -11,8 +11,7 @@ export class RedisCacheService {
   }
 
   async get(key: string) {
-    return this.redis.get(key)
-;
+    return this.redis.get(key);
   }
 
   async setNx(key, second) {

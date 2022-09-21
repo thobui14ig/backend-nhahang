@@ -6,10 +6,11 @@ import { OrderModule } from './order/order.module';
 import { BanModule } from './ban/ban.module';
 import { SanphamModule } from './sanpham/sanpham.module';
 import { DanhmucModule } from './danhmuc/danhmuc.module';
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TrackingModule } from './tracking/tracking.module';
 import { RedisModule } from '@liaoliaots/nestjs-redis';
+import { LoggerMiddleware } from './libs/middleware/logger.middleware';
 
 
 @Module({
@@ -27,7 +28,7 @@ import { RedisModule } from '@liaoliaots/nestjs-redis';
       "migrations": ["migration/*.js"],
 
       synchronize: true,
-      logging:"all",
+      // logging:"all",
       autoLoadEntities: true,
     }),
     RedisModule.forRoot({
@@ -45,4 +46,10 @@ import { RedisModule } from '@liaoliaots/nestjs-redis';
 
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes({ path: 'ban', method: RequestMethod.ALL });
+  }
+}
